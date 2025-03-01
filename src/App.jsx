@@ -1,9 +1,10 @@
 import "./App.css";
+import Ui from './component/Ui'
 
 function App() {
   return (
     <>
-      <div className="bg-slate-900 text-3xl text-white">Hi there</div>
+      <Ui/>
     </>
   );
 }
