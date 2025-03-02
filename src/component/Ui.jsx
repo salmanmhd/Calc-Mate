@@ -4,7 +4,7 @@ const Add = () => {
   return (
     //creating a UI designing
     <>
-    <div className='cal-3'><a>Calculator</a>
+    <div className='cal-3'>Calculator
     </div>
     <div class="container">
         <div class="calculator dark">
@@ -20,7 +20,6 @@ const Add = () => {
                         <td><button class="btn-operator" id="clear">Ac</button></td>
                         <td><button class="btn-operator" id="/">&divide;</button></td>
                         <td><button class="btn-operator" id="*">&times;</button></td>
-                        {/* <td><button class="btn-operator" id="backspace"></button></td> */}
                         <td><button class="btn-operator" id="backspace">&#x232B;
                         </button></td>
 
@@ -44,9 +43,9 @@ const Add = () => {
                         <td rowspan="2"><button class="btn-equal" id="equal">=</button></td>
                     </tr>
                     <tr>
-                        {/* <td><button class="btn-operator" id="("></button></td> */}
-                        <td><button class="btn-number" id="0">0</button></td>
-                        <td><button class="btn-operator" id=".">.</button></td>
+                            <td><button class="btn-number" id="zero">0</button></td>
+                            <td><button class="btn-operator" id="dot">.</button></td>
+                            <td><button class="btn-operator" id="module">%</button></td>
                     </tr>
                 </table>
             </div>
