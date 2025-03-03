@@ -32,11 +32,18 @@ body{
   }
    */
   /* .container {
+  body {
+    background-image: linear-gradient( to bottom right, rgb(207, 233, 212),rgb(168, 196, 219));
+  }
+  
+  .container {
+    align-items: center;
     height: 100vh;
     width: 100vw;
-    display: grid;
     place-items: center;
   } */
+    margin-top: 0%;
+  }
   
   .calculator {
     height: auto;
@@ -45,15 +52,6 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 30px #000;
   }
-  
-  /* .theme-toggler {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 1;
-  } */
   
   .theme-toggler.active {
     color: #333;
@@ -121,6 +119,15 @@ body{
   .calculator #display {
     color: #0a1e23;
   }
+
+  .display-screen{
+    color: white;
+    background-color:#132429 ;
+    border-radius: 10px;
+    max-height: 140px;
+    margin-bottom: 8px;
+
+  }
   
   .calculator button#clear {
     background-color: #ffd5d8;
@@ -178,8 +185,9 @@ body{
     
   }
   
-  .cal-3:hover{
+  .cal-3{
     text-align: center;
+
     font-size: larger;
     /* background-color: aqua; */
     padding-top: auto;
@@ -235,3 +243,67 @@ body{
     width: 50px;
   }
 }
+  /* History Log Styles */
+  .history-log {
+    max-height: 130px;
+    overflow-y: auto;
+    border-top: 1px solid #444;
+    margin-top: 10px;
+    padding-top: 5px;
+    scrollbar-width: thin;
+    scrollbar-color: #666 #2d2d2d;
+  }
+  
+  .history-log::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+ 
+ 
+  .history-item {
+    padding: 8px 5px;
+    font-size: 0.9em;
+    color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #444;
+  }
+  
+  .history-item:hover {
+    background-color: #3d3d3d;
+  }
+  
+  .history-equation {
+    color: #888;
+  }
+  
+  .history-result {
+    color: #888;
+    margin: 0 5px;
+  }
+  
+  .history-value {
+    color: #fff;
+  }
+  
+  .history-empty {
+    text-align: center;
+    padding: 10px;
+    color: #666;
+    font-style: italic;
+  }
+  
+  /* Adjust display screen to accommodate history */
+  .display-screen {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+  }
+  
+  .equation, .current {
+    flex-shrink: 0;
+  }
+  
