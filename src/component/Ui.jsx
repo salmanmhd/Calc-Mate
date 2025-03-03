@@ -120,7 +120,7 @@ const Add = () => {
   return (
     //creating a UI designing
     <>
-    <div className='cal-3'><a>Calculator</a>
+    <div className='cal-3'>Calculator
     </div>
     <div className="container">
         <div className="calculator dark">
@@ -140,6 +140,7 @@ const Add = () => {
             <div className="buttons">
                 <table>
                     <tr>
+
                         <td><button className="btn-operator" id="clear" onClick={handleClear}>Ac</button></td>
                         <td><button className="btn-operator" id="/" onClick={() => handleOperator('/')}>&divide;</button></td>
                         <td><button className="btn-operator" id="*" onClick={() => handleOperator('*')}>&times;</button></td>
@@ -167,6 +168,7 @@ const Add = () => {
                         <td rowSpan="2"><button className="btn-equal" id="equal" onClick={handleEqual}>=</button></td>
                     </tr>
                     <tr>
+
                         {/* <td><button className="btn-operator" id="("></button></td> */}
                         <td><button className="btn-number" id="0"onClick={() => handleNumber(0)}> 0</button></td>
                         <td><button className="btn-operator" id="." onClick={handleDecimal}>.</button></td>
