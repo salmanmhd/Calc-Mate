@@ -1,5 +1,6 @@
 // import React from 'react'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import HistoryLog from './HistoryLog';
 
 
 
@@ -10,6 +11,13 @@ const Add = () => {
   const [previousValue, setPreviousValue] = useState(null);
   const [operator, setOperator] = useState(null);
   const [waitingForNumber, setWaitingForNumber] = useState(true);
+  const [history, setHistory] = useState(JSON.parse(localStorage.getItem("history")) ||[]);
+
+
+  // useEffect for storing history log  in localStorage 
+  useEffect(()=>{
+    window.localStorage.setItem("history",JSON.stringify(history))
+  },[display,equation])
 
   // Modified handleNumber - only handles numeric input
   const handleNumber = (num) => {
@@ -39,18 +47,27 @@ const Add = () => {
     setWaitingForNumber(true);
   };
 
-  // Modified handleEqual - proper calculation trigger
+  // Modify handleEqual to properly store history
   const handleEqual = () => {
     if (!operator || !previousValue) return;
 
     const currentValue = parseFloat(display);
     const result = calculate(previousValue, currentValue, operator);
     
+    // Create history item with full equation
+    const newHistoryItem = {
+      equation: `${previousValue} ${operator} ${currentValue}`,
+      result: result
+    };
+    
     setDisplay(result.toString());
     setEquation(`${equation} ${currentValue} = `);
     setPreviousValue(result);
     setOperator(null);
     setWaitingForNumber(true);
+    
+    // Add to history 
+    setHistory(prevHistory => [newHistoryItem, ...prevHistory]);
   };
 
   const calculate = (a, b, op) => {
@@ -93,6 +110,11 @@ const Add = () => {
     setWaitingForNumber(false);
   };
 
+  // Add handleHistoryItemClick if not already present
+  const handleHistoryItemClick = (value) => {
+    setDisplay(value.equation+" = "+value.result);
+    setWaitingForNumber(true);
+  };
 
  
   return (
@@ -109,6 +131,11 @@ const Add = () => {
                 <div className="equation">{equation}</div>
         <div className="current">{display}</div>
 
+        {/* history component to show previous calculations */}
+        <HistoryLog 
+          history={history} 
+          onHistoryItemClick={handleHistoryItemClick}
+        />
             </div>
             <div className="buttons">
                 <table>
