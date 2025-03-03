@@ -120,6 +120,7 @@ const Add = () => {
   return (
     //creating a UI designing
     <>
+
     <div className='cal-3'>Calculator
     </div>
     <div className="container">
