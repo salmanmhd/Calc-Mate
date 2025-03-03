@@ -3,7 +3,7 @@ import CalcBtn from './CalcBtn'
 
 const Scientific = () => {
   return (
-    <div className='h-[80vh] w-[95vw] sm:w-[70vw] md:w-[53vw]  bg-black rounded-2xl absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] shadow-lg shadow-gray-800'>
+    <div className='h-[80vh] w-[95vw] sm:w-[70vw] md:w-[53vw]  bg-black rounded-2xl  shadow-lg shadow-gray-800'>
          <div className='h-24 w-[95%] bg-white m-auto mt-2 rounded-lg text-right text-2xl p-2'>
               123x1234
          </div>

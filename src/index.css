@@ -2,16 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* main css file */
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
+body{
+  overflow: hidden;
+}
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
@@ -34,21 +27,20 @@ body {
     color: #fff;
   }
   
-  body {
+  /* body{
     background-image: linear-gradient( to bottom right, rgba(79,51,176,1.0),rgba(210,53,165));
   }
-  
-  .container {
+   */
+  /* .container {
     height: 100vh;
     width: 100vw;
     display: grid;
     place-items: center;
-  }
+  } */
   
   .calculator {
-    position: relative;
     height: auto;
-    width: auto;
+    width: 25vw;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 30px #000;
@@ -196,3 +188,50 @@ body {
     /* background-color: #1547d1; */
   }
   
+
+
+
+@media screen and (max-width:410px) {
+  .calculator{
+    width: 90vw;
+  }
+
+  button {
+    height: 60px;
+    width:50px;
+  }
+  
+}
+
+@media screen and (min-width:411px) and (max-width:570px)  {
+  .calculator{
+    width:70vw;
+  }
+
+  button {
+    height: 60px;
+    width: 50px;
+  }
+}
+
+@media screen and (min-width:571px) and (max-width:712px)  {
+  .calculator{
+    width:65vw;
+  }
+
+  button {
+    height: 60px;
+    width: 50px;
+  }
+}
+
+@media screen and (min-width:713px) and (max-width:1200px)  {
+  .calculator{
+    width:30vw;
+  }
+
+  button {
+    height: 60px;
+    width: 50px;
+  }
+}

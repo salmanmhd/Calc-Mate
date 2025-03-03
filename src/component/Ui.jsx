@@ -98,20 +98,17 @@ const Add = () => {
   return (
     //creating a UI designing
     <>
-    <div className='cal-3'><a>Calculator</a>
-    </div>
-    <div class="container">
+    <div class="">
         <div class="calculator dark">
-            <div class="theme-toggler active">
+            {/* <div class="theme-toggler active">
                 <i class="toggler-icon"></i>
-            </div>
-            <div class="display-screen">
+            </div> */}
+            <div className='h-16 w-[95%] bg-white m-auto mt-2 rounded-lg text-right text-xl p-2'>
                 <div className="equation">{equation}</div>
-        <div className="current">{display}</div>
-
-            </div>
+           <div className="current">{display}</div>
+         </div>
             <div class="buttons">
-                <table>
+                <table className='w-full m-auto'>
                     <tr>
                         <td><button class="btn-operator" id="clear" onClick={handleClear}>Ac</button></td>
                         <td><button class="btn-operator" id="/" onClick={() => handleOperator('/')}>&divide;</button></td>
