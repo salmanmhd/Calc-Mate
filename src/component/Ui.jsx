@@ -100,49 +100,49 @@ const Add = () => {
     <>
     <div className='cal-3'><a>Calculator</a>
     </div>
-    <div class="container">
-        <div class="calculator dark">
-            <div class="theme-toggler active">
-                <i class="toggler-icon"></i>
+    <div className="container">
+        <div className="calculator dark">
+            <div className="theme-toggler active">
+                <i className="toggler-icon"></i>
             </div>
-            <div class="display-screen">
+            <div className="display-screen">
                 <div className="equation">{equation}</div>
         <div className="current">{display}</div>
 
             </div>
-            <div class="buttons">
+            <div className="buttons">
                 <table>
                     <tr>
-                        <td><button class="btn-operator" id="clear" onClick={handleClear}>Ac</button></td>
-                        <td><button class="btn-operator" id="/" onClick={() => handleOperator('/')}>&divide;</button></td>
-                        <td><button class="btn-operator" id="*" onClick={() => handleOperator('*')}>&times;</button></td>
-                        {/* <td><button class="btn-operator" id="backspace"></button></td> */}
-                        <td><button class="btn-operator" id="backspace" onClick={handleBackspace}>&#x232B;
+                        <td><button className="btn-operator" id="clear" onClick={handleClear}>Ac</button></td>
+                        <td><button className="btn-operator" id="/" onClick={() => handleOperator('/')}>&divide;</button></td>
+                        <td><button className="btn-operator" id="*" onClick={() => handleOperator('*')}>&times;</button></td>
+                        {/* <td><button className="btn-operator" id="backspace"></button></td> */}
+                        <td><button className="btn-operator" id="backspace" onClick={handleBackspace}>&#x232B;
                         </button></td>
 
                     </tr>
                     <tr>
-                        <td><button class="btn-number" id="7" onClick={() => handleNumber(7)}>7</button></td>
-                        <td><button class="btn-number" id="8"onClick={() => handleNumber(8)} >8</button></td>
-                        <td><button class="btn-number" id="9"onClick={() => handleNumber(9)}>9</button></td>
-                        <td><button class="btn-operator" id="-" onClick={() => handleOperator('-')}>-</button></td>
+                        <td><button className="btn-number" id="7" onClick={() => handleNumber(7)}>7</button></td>
+                        <td><button className="btn-number" id="8"onClick={() => handleNumber(8)} >8</button></td>
+                        <td><button className="btn-number" id="9"onClick={() => handleNumber(9)}>9</button></td>
+                        <td><button className="btn-operator" id="-" onClick={() => handleOperator('-')}>-</button></td>
                     </tr>
                     <tr>
-                        <td><button class="btn-number" id="4" onClick={() => handleNumber(4)}>4</button></td>
-                        <td><button class="btn-number" id="5 " onClick={() => handleNumber(5)}>5</button></td>
-                        <td><button class="btn-number" id="6" onClick={() => handleNumber(6)}>6</button></td>
-                        <td><button class="btn-operator" id="+" onClick={() => handleOperator('+')}>+</button></td>
+                        <td><button className="btn-number" id="4" onClick={() => handleNumber(4)}>4</button></td>
+                        <td><button className="btn-number" id="5 " onClick={() => handleNumber(5)}>5</button></td>
+                        <td><button className="btn-number" id="6" onClick={() => handleNumber(6)}>6</button></td>
+                        <td><button className="btn-operator" id="+" onClick={() => handleOperator('+')}>+</button></td>
                     </tr>
                     <tr>
-                        <td><button class="btn-number" id="1" onClick={() => handleNumber(1)}>1</button></td>
-                        <td><button class="btn-number" id="2" onClick={() => handleNumber(2)}>2</button></td>
-                        <td><button class="btn-number" id="3" onClick={() => handleNumber(3)}>3</button></td>
-                        <td rowspan="2"><button class="btn-equal" id="equal" onClick={handleEqual}>=</button></td>
+                        <td><button className="btn-number" id="1" onClick={() => handleNumber(1)}>1</button></td>
+                        <td><button className="btn-number" id="2" onClick={() => handleNumber(2)}>2</button></td>
+                        <td><button className="btn-number" id="3" onClick={() => handleNumber(3)}>3</button></td>
+                        <td rowSpan="2"><button className="btn-equal" id="equal" onClick={handleEqual}>=</button></td>
                     </tr>
                     <tr>
-                        {/* <td><button class="btn-operator" id="("></button></td> */}
-                        <td><button class="btn-number" id="0"onClick={() => handleNumber(0)}> 0</button></td>
-                        <td><button class="btn-operator" id="." onClick={handleDecimal}>.</button></td>
+                        {/* <td><button className="btn-operator" id="("></button></td> */}
+                        <td><button className="btn-number" id="0"onClick={() => handleNumber(0)}> 0</button></td>
+                        <td><button className="btn-operator" id="." onClick={handleDecimal}>.</button></td>
                     </tr>
                 </table>
             </div>
