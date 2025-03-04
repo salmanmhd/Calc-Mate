@@ -76,6 +76,7 @@ const Add = () => {
       case '-': return a - b;
       case '*': return a * b;
       case '/': return b !== 0 ? a / b : 'Error';
+      case '%': return res = num2 !== 0 ? num % num2 : "Cannot divide by zero";
       default: return b;
     }
   };
@@ -95,7 +96,6 @@ const Add = () => {
       setDisplay(display + '.');
     }
   };
-
   const handleBackspace = () => {
     if (display === 'Error') {
       setDisplay('0');
@@ -169,10 +169,9 @@ const Add = () => {
                         <td rowSpan="2"><button className="btn-equal" id="equal" onClick={handleEqual}>=</button></td>
                     </tr>
                     <tr>
-
-                        {/* <td><button className="btn-operator" id="("></button></td> */}
-                        <td><button className="btn-number" id="0"onClick={() => handleNumber(0)}> 0</button></td>
                         <td><button className="btn-operator" id="." onClick={handleDecimal}>.</button></td>
+                        <td><button className="btn-number" id="0"onClick={() => handleNumber(0)}> 0</button></td>
+                        <td><button className="btn-operator" id="%">%</button></td>
                     </tr>
                 </table>
             </div>
