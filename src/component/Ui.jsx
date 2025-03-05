@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import HistoryLog from './HistoryLog';
 
 
-
 const Add = () => {
 
     const [display, setDisplay] = useState('0');
@@ -76,6 +75,7 @@ const Add = () => {
       case '-': return a - b;
       case '*': return a * b;
       case '/': return b !== 0 ? a / b : 'Error';
+      case '%': return res = num2 !== 0 ? num % num2 : "Cannot divide by zero";
       default: return b;
     }
   };
@@ -95,7 +95,6 @@ const Add = () => {
       setDisplay(display + '.');
     }
   };
-
   const handleBackspace = () => {
     if (display === 'Error') {
       setDisplay('0');
@@ -121,8 +120,7 @@ const Add = () => {
     //creating a UI designing
     <>
 
-    <div className='cal-3'>Calculator
-    </div>
+   
     <div className="container">
         <div className="calculator dark">
             <div className="theme-toggler active">
@@ -138,8 +136,10 @@ const Add = () => {
           onHistoryItemClick={handleHistoryItemClick}
         />
             </div>
+            {/* buttons division tag */}
             <div className="buttons">
                 <table>
+                  {/* first row */}
                     <tr>
 
                         <td><button className="btn-operator" id="clear" onClick={handleClear}>Ac</button></td>
@@ -150,29 +150,32 @@ const Add = () => {
                         </button></td>
 
                     </tr>
+                    {/* second row */}
                     <tr>
                         <td><button className="btn-number" id="7" onClick={() => handleNumber(7)}>7</button></td>
                         <td><button className="btn-number" id="8"onClick={() => handleNumber(8)} >8</button></td>
                         <td><button className="btn-number" id="9"onClick={() => handleNumber(9)}>9</button></td>
                         <td><button className="btn-operator" id="-" onClick={() => handleOperator('-')}>-</button></td>
                     </tr>
+                    {/* third row */}
                     <tr>
                         <td><button className="btn-number" id="4" onClick={() => handleNumber(4)}>4</button></td>
                         <td><button className="btn-number" id="5 " onClick={() => handleNumber(5)}>5</button></td>
                         <td><button className="btn-number" id="6" onClick={() => handleNumber(6)}>6</button></td>
                         <td><button className="btn-operator" id="+" onClick={() => handleOperator('+')}>+</button></td>
                     </tr>
+                    {/* fouth row */}
                     <tr>
                         <td><button className="btn-number" id="1" onClick={() => handleNumber(1)}>1</button></td>
                         <td><button className="btn-number" id="2" onClick={() => handleNumber(2)}>2</button></td>
                         <td><button className="btn-number" id="3" onClick={() => handleNumber(3)}>3</button></td>
                         <td rowSpan="2"><button className="btn-equal" id="equal" onClick={handleEqual}>=</button></td>
                     </tr>
+                    {/* last row */}
                     <tr>
-
-                        {/* <td><button className="btn-operator" id="("></button></td> */}
-                        <td><button className="btn-number" id="0"onClick={() => handleNumber(0)}> 0</button></td>
                         <td><button className="btn-operator" id="." onClick={handleDecimal}>.</button></td>
+                        <td><button className="btn-number" id="0"onClick={() => handleNumber(0)}> 0</button></td>
+                        <td><button className="btn-operator" id="%">%</button></td>
                     </tr>
                 </table>
             </div>
