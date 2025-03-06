@@ -1,6 +1,6 @@
 import CalcBtn from "./CalcBtn";
 import React, { useEffect, useState } from "react";
-
+import HistoryLog from "./HistoryLog";
 const Scientific = () => {
   const [display, setDisplay] = useState("0");
   const [equation, setEquation] = useState("");
