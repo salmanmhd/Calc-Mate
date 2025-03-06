@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 
 const HistoryLog = ({ history, onHistoryItemClick }) => {
   return (
     <div className="history-log">
+      <h1 className="history-title">History Logs</h1>
+
       {history.length === 0 ? (
         <div className="history-empty">No calculations yet</div>
       ) : (
         history.map((item, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="history-item"
             onClick={() => onHistoryItemClick(item)}
           >
@@ -22,4 +24,4 @@ const HistoryLog = ({ history, onHistoryItemClick }) => {
   );
 };
 
-export default HistoryLog; 
+export default HistoryLog;
