@@ -274,6 +274,7 @@ button#equal {
 
 .history-title {
   margin-bottom: 1rem;
+  color: white;
   border-bottom: 1px solid grey;
 }
 .history-item {

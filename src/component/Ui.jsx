@@ -131,12 +131,6 @@ const Add = () => {
           <div className="display-screen">
             <div className="equation">{equation}</div>
             <div className="current">{display}</div>
-
-            {/* history component to show previous calculations */}
-            <HistoryLog
-              history={history}
-              onHistoryItemClick={handleHistoryItemClick}
-            />
           </div>
           {/* buttons division tag */}
           <div className="buttons">
@@ -329,6 +323,11 @@ const Add = () => {
           </div>
         </div>
       </div>
+      {/* history component to show previous calculations */}
+      <HistoryLog
+        history={history}
+        onHistoryItemClick={handleHistoryItemClick}
+      />
     </>
   );
 };
