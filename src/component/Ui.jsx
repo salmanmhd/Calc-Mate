@@ -14,6 +14,22 @@ const Add = () => {
 
 
   // useEffect for storing history log  in localStorage 
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const keyFunction = keyMap[event.key];
+      if (keyFunction) {
+        event.preventDefault();  // Prevent default action to stop unwanted side effects
+        keyFunction();
+      }
+    };
+  
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []); // Empty dependency array ensures this effect runs only once after the initial render
+  
   useEffect(()=>{
     window.localStorage.setItem("history",JSON.stringify(history))
   },[display,equation])
@@ -115,6 +131,28 @@ const Add = () => {
     setWaitingForNumber(true);
   };
 
+  const keyMap = {
+    '1': () => handleNumber('1'),
+    '2': () => handleNumber('2'),
+    '3': () => handleNumber('3'),
+    '4': () => handleNumber('4'),
+    '5': () => handleNumber('5'),
+    '6': () => handleNumber('6'),
+    '7': () => handleNumber('7'),
+    '8': () => handleNumber('8'),
+    '9': () => handleNumber('9'),
+    '0': () => handleNumber('0'),
+    '.': () => handleDecimal(),
+    '+': () => handleOperator('+'),
+    '-': () => handleOperator('-'),
+    '*': () => handleOperator('*'),
+    '/': () => handleOperator('/'),
+    '=': () => handleEqual(),
+    'Enter': () => handleEqual(),
+    'Backspace': () => handleBackspace(),
+    'A': () => handleClear(),
+    'a': () => handleClear(),
+  };
  
   return (
     //creating a UI designing
