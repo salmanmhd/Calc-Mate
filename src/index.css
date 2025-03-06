@@ -6,6 +6,7 @@
 
 body {
   overflow: hidden;
+  position: relative;
 }
 
 code {
@@ -131,7 +132,8 @@ button#equal {
   color: white;
   background-color: #132429;
   border-radius: 10px;
-  max-height: 140px;
+  max-height: max-content;
+  padding: 10px;
   margin-bottom: 8px;
 }
 
@@ -247,7 +249,15 @@ button#equal {
 
 /* History Log Styles */
 .history-log {
-  max-height: 130px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 75%;
+  border-radius: 1rem;
+  min-width: 200px;
+  max-height: 230px;
+  background: #1b2f38;
+  padding: 1.2rem 1.5rem;
   overflow-y: auto;
   border-top: 1px solid #444;
   margin-top: 10px;
@@ -260,6 +270,10 @@ button#equal {
   width: 6px;
 }
 
+.history-title {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid grey;
+}
 .history-item {
   padding: 8px 5px;
   font-size: 0.9em;
