@@ -7,7 +7,16 @@ const Scientific = () => {
   const [previousValue, setPreviousValue] = useState(null);
   const [operator, setOperator] = useState(null);
   const [waitingForNumber, setWaitingForNumber] = useState(true);
+  const [historyLogs,setHistoryLogs] = useState(JSON.parse(localStorage.getItem("scientificLogS")) || [],)
+  
+ 
+  // storing history log in localStorage
+  useEffect(()=>{
+    window.localStorage.setItem("scientificLogS",JSON.stringify(historyLogs))
+  },[historyLogs,display])
 
+  
+  
   const handleNumber = (number) => {
     if (waitingForNumber) {
       setDisplay(number);
@@ -21,6 +30,8 @@ const Scientific = () => {
     const currentValue = parseFloat(display);
     if (operator && !waitingForNumber) {
       const result = calculate(previousValue, currentValue, operator);
+
+
       setDisplay(result.toString());
       setPreviousValue(result);
     } else {
@@ -48,6 +59,15 @@ const Scientific = () => {
   const handleTrigonometric = (func) => {
     const currentValue = parseFloat(display);
     const result = Math[func]((currentValue * Math.PI) / 180); // Assuming input in degrees
+
+           // Create history item with full equation
+           const newHistoryItem = {
+            equation: `${func}(${currentValue}) `,
+            result:`${result.toFixed(5).toString()}`
+            
+               };
+           setHistoryLogs((prev)=>[newHistoryItem,...prev])
+      
     setDisplay(result.toString());
     setWaitingForNumber(true);
   };
@@ -56,7 +76,14 @@ const Scientific = () => {
     const currentValue = parseFloat(display);
     const result =
       type === "log" ? Math.log10(currentValue) : Math.log(currentValue);
-    setDisplay(result.toString());
+         // Create history item with full equation
+    const newHistoryItem = {
+      equation: `${type}(${currentValue}) `,
+      result:`${result.toFixed(5).toString()}`
+        }
+     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+
+    setDisplay(result.toFixed().toString());
     setWaitingForNumber(true);
   };
 
@@ -64,6 +91,15 @@ const Scientific = () => {
     const currentValue = parseFloat(display);
     const result =
       currentValue !== 0 ? 1 / currentValue : "Error: Division by zero";
+
+             // Create history item with full equation
+    const newHistoryItem = {
+      equation: `1/${currentValue}`,
+      result:`  ${result.toFixed(5).toString()}`
+      
+         };
+     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+
     setDisplay(result.toString());
     setWaitingForNumber(true);
   };
@@ -71,6 +107,15 @@ const Scientific = () => {
   const handleFactorial = () => {
     const currentValue = parseInt(display);
     const result = factorial(currentValue);
+
+           // Create history item with full equation
+           const newHistoryItem = {
+            equation: `!${currentValue} `,
+            result:` ${result.toFixed(2).toString()}`
+            
+               };
+           setHistoryLogs((prev)=>[newHistoryItem,...prev])
+      
     setDisplay(result.toString());
     setWaitingForNumber(true);
   };
@@ -84,13 +129,29 @@ const Scientific = () => {
   const handlePi = () => {
     setDisplay(Math.PI.toString());
     setWaitingForNumber(true);
+     // Create history item with full equation
+     const newHistoryItem = {
+      equation: `pi`,
+      result: Math.PI.toString()
+         };
+     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+
   };
 
   const handleSquareRoot = () => {
     const currentValue = parseFloat(display);
     const result =
       currentValue >= 0 ? Math.sqrt(currentValue) : "Error: Negative root";
-    setDisplay(result.toString());
+
+          // Create history item with full equation
+    const newHistoryItem = {
+      equation: `sqrt(${currentValue})`,
+      result:`${result.toFixed(5).toString()}`
+      
+         };
+     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+
+    setDisplay(result.toFixed(5).toString());
     setWaitingForNumber(true);
   };
 
@@ -114,6 +175,14 @@ const Scientific = () => {
   const handleEqual = () => {
     const currentValue = parseFloat(display);
     const result = calculate(previousValue, currentValue, operator);
+
+          // Create history item with full equation
+    const newHistoryItem = {
+      equation: `${previousValue} ${operator} ${currentValue}`,
+      result: result,
+         };
+     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+
     setDisplay(result.toString());
     setPreviousValue(null);
     setOperator(null);
@@ -135,10 +204,12 @@ const Scientific = () => {
   };
 
   return (
-    <div className="h-[63vh] w-[95vw] rounded-2xl bg-black shadow-lg shadow-gray-800 sm:w-[70vw] md:w-[53vw]">
+    <div className="scientific h-[63vh] w-[95vw] rounded-2xl bg-black shadow-lg shadow-gray-800 sm:w-[70vw] md:w-[53vw]">
       <div className="m-auto mt-10 h-[18vh] w-[95%] rounded-lg bg-white p-2 text-right text-8xl">
         {display}
       </div>
+      {/* history component */}
+      {/* <HistoryLog  history={historyLogs} /> */}
       <div className="m-auto mt-2 w-[95%] rounded-lg p-1 text-right text-2xl">
         <table className="w-full">
           <tr className="flex w-[100%] items-center justify-between">
