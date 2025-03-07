@@ -278,7 +278,8 @@ button#equal {
 .display-screen {
   display: flex;
   flex-direction: column;
-  min-height: 200px;
+  min-height: 70px;
+  padding: 7px 9px;
 }
 
 .equation,
