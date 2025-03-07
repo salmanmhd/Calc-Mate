@@ -7,16 +7,15 @@ const Scientific = () => {
   const [previousValue, setPreviousValue] = useState(null);
   const [operator, setOperator] = useState(null);
   const [waitingForNumber, setWaitingForNumber] = useState(true);
-  const [historyLogs,setHistoryLogs] = useState(JSON.parse(localStorage.getItem("scientificLogS")) || [],)
-  
- 
-  // storing history log in localStorage
-  useEffect(()=>{
-    window.localStorage.setItem("scientificLogS",JSON.stringify(historyLogs))
-  },[historyLogs,display])
+  const [historyLogs, setHistoryLogs] = useState(
+    JSON.parse(localStorage.getItem("scientificLogS")) || [],
+  );
 
-  
-  
+  // storing history log in localStorage
+  useEffect(() => {
+    window.localStorage.setItem("scientificLogS", JSON.stringify(historyLogs));
+  }, [historyLogs, display]);
+
   const handleNumber = (number) => {
     if (waitingForNumber) {
       setDisplay(number);
@@ -30,7 +29,6 @@ const Scientific = () => {
     const currentValue = parseFloat(display);
     if (operator && !waitingForNumber) {
       const result = calculate(previousValue, currentValue, operator);
-
 
       setDisplay(result.toString());
       setPreviousValue(result);
@@ -60,14 +58,13 @@ const Scientific = () => {
     const currentValue = parseFloat(display);
     const result = Math[func]((currentValue * Math.PI) / 180); // Assuming input in degrees
 
-           // Create history item with full equation
-           const newHistoryItem = {
-            equation: `${func}(${currentValue}) `,
-            result:`${result.toFixed(5).toString()}`
-            
-               };
-           setHistoryLogs((prev)=>[newHistoryItem,...prev])
-      
+    // Create history item with full equation
+    const newHistoryItem = {
+      equation: `${func}(${currentValue}) `,
+      result: `${result.toFixed(5).toString()}`,
+    };
+    setHistoryLogs((prev) => [newHistoryItem, ...prev]);
+
     setDisplay(result.toString());
     setWaitingForNumber(true);
   };
@@ -76,12 +73,12 @@ const Scientific = () => {
     const currentValue = parseFloat(display);
     const result =
       type === "log" ? Math.log10(currentValue) : Math.log(currentValue);
-         // Create history item with full equation
+    // Create history item with full equation
     const newHistoryItem = {
       equation: `${type}(${currentValue}) `,
-      result:`${result.toFixed(5).toString()}`
-        }
-     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+      result: `${result.toFixed(5).toString()}`,
+    };
+    setHistoryLogs((prev) => [newHistoryItem, ...prev]);
 
     setDisplay(result.toFixed().toString());
     setWaitingForNumber(true);
@@ -92,13 +89,12 @@ const Scientific = () => {
     const result =
       currentValue !== 0 ? 1 / currentValue : "Error: Division by zero";
 
-             // Create history item with full equation
+    // Create history item with full equation
     const newHistoryItem = {
       equation: `1/${currentValue}`,
-      result:`  ${result.toFixed(5).toString()}`
-      
-         };
-     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+      result: `  ${result.toFixed(5).toString()}`,
+    };
+    setHistoryLogs((prev) => [newHistoryItem, ...prev]);
 
     setDisplay(result.toString());
     setWaitingForNumber(true);
@@ -108,14 +104,13 @@ const Scientific = () => {
     const currentValue = parseInt(display);
     const result = factorial(currentValue);
 
-           // Create history item with full equation
-           const newHistoryItem = {
-            equation: `!${currentValue} `,
-            result:` ${result.toFixed(2).toString()}`
-            
-               };
-           setHistoryLogs((prev)=>[newHistoryItem,...prev])
-      
+    // Create history item with full equation
+    const newHistoryItem = {
+      equation: `!${currentValue} `,
+      result: ` ${result.toFixed(2).toString()}`,
+    };
+    setHistoryLogs((prev) => [newHistoryItem, ...prev]);
+
     setDisplay(result.toString());
     setWaitingForNumber(true);
   };
@@ -129,13 +124,12 @@ const Scientific = () => {
   const handlePi = () => {
     setDisplay(Math.PI.toString());
     setWaitingForNumber(true);
-     // Create history item with full equation
-     const newHistoryItem = {
+    // Create history item with full equation
+    const newHistoryItem = {
       equation: `pi`,
-      result: Math.PI.toString()
-         };
-     setHistoryLogs((prev)=>[newHistoryItem,...prev])
-
+      result: Math.PI.toString(),
+    };
+    setHistoryLogs((prev) => [newHistoryItem, ...prev]);
   };
 
   const handleSquareRoot = () => {
@@ -143,13 +137,12 @@ const Scientific = () => {
     const result =
       currentValue >= 0 ? Math.sqrt(currentValue) : "Error: Negative root";
 
-          // Create history item with full equation
+    // Create history item with full equation
     const newHistoryItem = {
       equation: `sqrt(${currentValue})`,
-      result:`${result.toFixed(5).toString()}`
-      
-         };
-     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+      result: `${result.toFixed(5).toString()}`,
+    };
+    setHistoryLogs((prev) => [newHistoryItem, ...prev]);
 
     setDisplay(result.toFixed(5).toString());
     setWaitingForNumber(true);
@@ -176,12 +169,12 @@ const Scientific = () => {
     const currentValue = parseFloat(display);
     const result = calculate(previousValue, currentValue, operator);
 
-          // Create history item with full equation
+    // Create history item with full equation
     const newHistoryItem = {
       equation: `${previousValue} ${operator} ${currentValue}`,
       result: result,
-         };
-     setHistoryLogs((prev)=>[newHistoryItem,...prev])
+    };
+    setHistoryLogs((prev) => [newHistoryItem, ...prev]);
 
     setDisplay(result.toString());
     setPreviousValue(null);
@@ -209,7 +202,7 @@ const Scientific = () => {
         {display}
       </div>
       {/* history component */}
-      {/* <HistoryLog  history={historyLogs} /> */}
+      <HistoryLog history={historyLogs} />
       <div className="m-auto mt-2 w-[95%] rounded-lg p-1 text-right text-2xl">
         <table className="w-full">
           <tr className="flex w-[100%] items-center justify-between">
