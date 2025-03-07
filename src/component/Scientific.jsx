@@ -8,33 +8,14 @@ const Scientific = () => {
   const [operator, setOperator] = useState(null);
   const [waitingForNumber, setWaitingForNumber] = useState(true);
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      const keyFunction = keyMap[event.key];
-      if (keyFunction) {
-        event.preventDefault();  // Stop the default action of the event
-        keyFunction();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-   
   const handleNumber = (number) => {
-    console.log("Handle number:",number);
     if (waitingForNumber) {
-      setDisplay(number.toString());
+      setDisplay(number);
       setWaitingForNumber(false);
     } else {
-
-      setDisplay(display === '0' ? number.toString() : display + number.toString());
-
+      setDisplay(display === "0" ? number : display + number);
     }
   };
-  
 
   const handleOperation = (operation) => {
     const currentValue = parseFloat(display);
@@ -153,45 +134,10 @@ const Scientific = () => {
     setWaitingForNumber(false);
   };
 
-   // KeyBoard Mapping
-  const keyMap = {
-    '1': () => handleNumber('1'),
-    '2': () => handleNumber('2'),
-    '3': () => handleNumber('3'),
-    '4': () => handleNumber('4'),
-    '5': () => handleNumber('5'),
-    '6': () => handleNumber('6'),
-    '7': () => handleNumber('7'),
-    '8': () => handleNumber('8'),
-    '9': () => handleNumber('9'),
-    '0': () => handleNumber('0'),
-    '.': () => handleDecimal(),
-    '+': () => handleOperation('+'),
-    '-': () => handleOperation('-'),
-    '*': () => handleOperation('*'),
-    '/': () => handleOperation('/'),
-    '=': () => handleEqual(),
-    'Enter': () => handleEqual(),
-    'Backspace': () => handleBackspace(),
-    'A': () => handleClear(),
-    'a': () => handleClear(),
-    's': () => handleTrigonometric('sin'),
-    'l': () => handleLogarithm('log'),
-    't': () => handleTrigonometric('tan'),
-    'c': () => handleTrigonometric('cos'),
-    'p': () => handlePi(),
-    'r': () => handleSquareRoot(),
-    'f': () => handleFactorial(),
-    'i': () => handleInverse()
-  };
-
   return (
-
-    <div className='h-[63vh] w-[95vw] sm:w-[70vw] md:w-[53vw] bg-black rounded-2xl shadow-lg shadow-gray-800'>
-      <div className='h-[18vh] w-[95%] bg-white m-auto mt-10 rounded-lg text-right text-8xl p-2'>
-                <div className="equation">{equation}</div>
-        <div className="current">{display}</div>
-
+    <div className="h-[63vh] w-[95vw] rounded-2xl bg-black shadow-lg shadow-gray-800 sm:w-[70vw] md:w-[53vw]">
+      <div className="m-auto mt-10 h-[18vh] w-[95%] rounded-lg bg-white p-2 text-right text-8xl">
+        {display}
       </div>
       <div className="m-auto mt-2 w-[95%] rounded-lg p-1 text-right text-2xl">
         <table className="w-full">
